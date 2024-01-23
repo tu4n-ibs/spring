@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table th:object="${viewEmployee}">
+    <tr>
+        <input type="hidden" th:field="*{id}" id="id">
+    </tr>
+    <tr>
+        <td><h3>Name: </h3></td>
+        <td><label th:text="${viewEmployee.name}"></label></td>
+    </tr>
+    <tr>
+        <td><h3>Office: </h3></td>
+        <td><label  th:text="${viewEmployee.getOffice().name}"></label></td>
+    </tr>
+    <tr>
+        <td><h3>Salary: </h3></td>
+        <td><label  th:text="${viewEmployee.salary}"></label></td>
+    </tr>
+    <tr>
+        <td><a href="" th:href="@{/home}">home</a></td>
+    </tr>
+</table>
+</body>
+</html>

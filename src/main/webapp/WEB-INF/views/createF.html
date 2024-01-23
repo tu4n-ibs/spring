@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/save}" method="post" th:object="${newEmployee}">
+    <table>
+        <tr>
+            <td><label>Name: </label></td>
+            <td><input type="text" th:field="*{name}" placeholder="name..."></td>
+        </tr>
+        <tr>
+            <td><label>Salary: </label></td>
+            <td><input type="number" th:field="*{salary}" required placeholder="salary..."></td>
+        </tr>
+        <tr >
+            <select th:field="*{office}">
+                <option th:each="op : ${listOffice}" th:text="${op.name}" th:value="${op.id}">
+            </select>
+        </tr>
+        <tr>
+            <td><input type="submit" value="create"></td>
+        </tr>
+    </table>
+    <span th:each="err : ${ListErr}" th:text="${err.getDefaultMessage()}" style="color: red"></span>
+</form>
+<a href="" th:href="@{/home}">home</a>
+</body>
+</html>

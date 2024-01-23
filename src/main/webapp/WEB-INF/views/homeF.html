@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>
+<body>
+<h1><a href="" th:href="@{/home}" style="text-decoration: none; cursor: pointer">Home</a></h1>
+<table>
+    <tr>
+        <td colspan="5">
+            search with name
+            <form action="" th:action="@{/search}" method="get">
+                <input type="text" name="keyword" placeholder="name...">
+                <input type="submit" value="search">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5"><a href="" th:href="@{/create}">add new Employee</a></td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            search with salary
+            <form action="" th:action="@{/searchSalary}" method="get">
+                <input type="number" placeholder="one..." name="salaryOne">
+                <input type="number" placeholder="two..." name="salaryTwo">
+                <input type="submit" value="search">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SALARY <a href="" style="cursor: pointer;text-decoration: none" th:href="@{/asc}">asc</a> <a href="" style="cursor: pointer;text-decoration: none" th:href="@{/desc}">desc</a></th>
+        <th>Office</th>
+    </tr>
+    <tr th:each="row : ${employee}">
+        <td th:text="${row.id}"></td>
+        <td><a href="" th:href="@{/{id}/view(id=${row.getId()})}" th:text="${row.name}" ></a></td>
+        <td th:text="${row.salary}"></td>
+        <td th:text="${row.getOffice().name}"></td>
+        <td>
+            <a href="" th:href="@{/{id}/delete(id=${row.getId()})}">delete</a>
+            <a href="" th:href="@{/{id}/update(id=${row.getId()})}">update</a>
+        </td>
+    </tr>
+</table>
+<a href="" th:if="${employee.hasPrevious()}" th:href="@{'home'(page=${employee.number - 1})}" style="cursor: pointer">previous</a>
+<span th:text="${employee.number + 1}"></span>/<span th:text="${employee.totalPages}"></span>
+<a href="" th:if="${employee.hasNext()}" th:href="@{'home'(page=${employee.number + 1})}" style="cursor: pointer">next</a>
+</body>
+</html>
