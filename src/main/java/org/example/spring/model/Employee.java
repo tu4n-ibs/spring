@@ -3,6 +3,8 @@ package org.example.spring.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Employee {
@@ -29,7 +31,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, int salary) {
+    public Employee(@NotEmpty @Size(min = 2, max = 30) int id, String name, @Min(0) int salary) {
         this.id = id;
         this.name = name;
         this.salary = salary;

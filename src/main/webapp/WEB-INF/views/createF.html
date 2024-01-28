@@ -15,11 +15,18 @@
             <td><label>Salary: </label></td>
             <td><input type="number" th:field="*{salary}" required placeholder="salary..."></td>
         </tr>
-        <tr >
+        <tr>
             <select th:field="*{office}">
                 <option th:each="op : ${listOffice}" th:text="${op.name}" th:value="${op.id}">
             </select>
         </tr>
+
+
+
+
+
+
+
         <tr>
             <td><input type="submit" value="create"></td>
         </tr>

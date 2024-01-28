@@ -15,7 +15,7 @@
     <tr>
         <td colspan="5">
             search with name
-            <form action="" th:action="@{/search}" method="post">
+            <form action="" th:action="@{/search}" method="get">
                 <input type="text" name="keyword" placeholder="name...">
                 <input type="submit" value="search">
             </form>
@@ -40,7 +40,7 @@
         <th>SALARY <a href="" style="cursor: pointer;text-decoration: none" th:href="@{/asc}">asc</a> <a href="" style="cursor: pointer;text-decoration: none" th:href="@{/desc}">desc</a></th>
         <th>Office</th>
     </tr>
-    <tr th:each="row : ${employee}">
+    <tr th:each="row : ${ee}">
         <td th:text="${row.id}"></td>
         <td><a href="" th:href="@{/{id}/view(id=${row.getId()})}" th:text="${row.name}" ></a></td>
         <td th:text="${row.salary}"></td>
@@ -51,8 +51,8 @@
         </td>
     </tr>
 </table>
-<a href="" th:if="${employee.hasPrevious()}" th:href="@{'home'(page=${employee.number - 1})}" style="cursor: pointer">previous</a>
-<span th:text="${employee.number + 1}"></span>/<span th:text="${employee.totalPages}"></span>
-<a href="" th:if="${employee.hasNext()}" th:href="@{'home'(page=${employee.number + 1})}" style="cursor: pointer">next</a>
+<a href="" th:if="${ee.hasPrevious()}" th:href="@{'search'(page=${ee.number - 1})}" style="cursor: pointer">previous</a>
+<span th:text="${ee.number + 1}"></span>/<span th:text="${ee.totalPages}"></span>
+<a href="" th:if="${ee.hasNext()}" th:href="@{'search'(page=${ee.number + 1})}" style="cursor: pointer">next</a>
 </body>
 </html>
